@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     public float Speed = 5.0f;
-
-    public float drag;
 
     Rigidbody rb;
 
@@ -16,16 +14,23 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 _moveDir = Vector3.zero;
 
+    public float CollectDelay = 1f;
+    float timer;
+
     float WoodAmount = 0;
     float StoneAmount = 0;
 
     public TMPro.TMP_Text WoodAmountText;
     public TMPro.TMP_Text StoneAmountText;
 
+    PopUpSystem pop;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        pop = GameObject.FindGameObjectWithTag("GameUI").GetComponent<PopUpSystem>();
+        pop.PopDown();
     }
 
     // Update is called once per frame
@@ -38,7 +43,6 @@ public class CharacterMovement : MonoBehaviour
         SpeedControl();
 
         ChangeResourceText();
-
     }
 
     void FixedUpdate()
@@ -72,11 +76,31 @@ public class CharacterMovement : MonoBehaviour
         StoneAmountText.text = string.Format("{0}", StoneAmount);
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerStay(Collider col)
     {
+        timer += Time.deltaTime;
         if (col.gameObject.name == "WoodObj")
         {
-            WoodAmount += 1;
+            if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
+            {
+                WoodAmount += 1;
+                timer -= CollectDelay;
+            }
+            pop.PopUp("Press E to collect Wood");
         }
+        else if (col.gameObject.name == "StoneObj")
+        {
+            if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
+            {
+                StoneAmount += 1;
+                timer -= CollectDelay;
+            }
+            pop.PopUp("Press E to collect Stone");
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        pop.PopDown();
     }
 }
