@@ -221,7 +221,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 65620690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0354a80d834f2489aef626536a58d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 94474500b111da84c8f262bd50a7d474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
@@ -3695,7 +3695,7 @@ GameObject:
   - component: {fileID: 1940560965}
   m_Layer: 5
   m_Name: TowerSelect
-  m_TagString: Untagged
+  m_TagString: GameUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4310,10 +4310,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7759984588794743171, guid: e79b9bbae4aa122439350f744ad44180, type: 3}
-      propertyPath: mi_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759984588794743171, guid: e79b9bbae4aa122439350f744ad44180, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -4324,6 +4320,10 @@ PrefabInstance:
     - target: {fileID: 7759984588794743171, guid: e79b9bbae4aa122439350f744ad44180, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759984588794743171, guid: e79b9bbae4aa122439350f744ad44180, type: 3}
+      propertyPath: mi_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7759984588794743171, guid: e79b9bbae4aa122439350f744ad44180, type: 3}
       propertyPath: m_AnchoredPosition.x
