@@ -7,7 +7,6 @@ public class PopUpSystem : MonoBehaviour
 {
     public GameObject popUpBox;
     public TMP_Text popUpText;
-    int test;
 
     public void PopUp(string text)
     {

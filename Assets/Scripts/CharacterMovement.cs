@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterController : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     public float Speed = 5.0f;
+
+    public float drag;
 
     Rigidbody rb;
 
@@ -13,10 +15,6 @@ public class CharacterController : MonoBehaviour
     float verticalInput;
 
     private Vector3 _moveDir = Vector3.zero;
-    private bool canMove;
-
-    public float CollectDelay = 1f;
-    float timer;
 
     float WoodAmount = 0;
     float StoneAmount = 0;
@@ -24,18 +22,10 @@ public class CharacterController : MonoBehaviour
     public TMPro.TMP_Text WoodAmountText;
     public TMPro.TMP_Text StoneAmountText;
 
-    private PopUpSystem pop;
-    private TowerBuy buy;
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pop = GameObject.FindGameObjectWithTag("GameUI").GetComponent<PopUpSystem>();
-        pop.PopDown();
-
-        buy = GameObject.FindGameObjectWithTag("GameUI").GetComponent<TowerBuy>();
-        buy.CloseBuy();
     }
 
     // Update is called once per frame
@@ -49,18 +39,6 @@ public class CharacterController : MonoBehaviour
 
         ChangeResourceText();
 
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (buy.isActive() == false)
-            {
-                buy.OpenBuy();
-            }
-            else
-            {
-                buy.CloseBuy();
-            }
-        }
     }
 
     void FixedUpdate()
@@ -94,31 +72,11 @@ public class CharacterController : MonoBehaviour
         StoneAmountText.text = string.Format("{0}", StoneAmount);
     }
 
-    private void OnTriggerStay(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
-        timer += Time.deltaTime;
         if (col.gameObject.name == "WoodObj")
         {
-            if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
-            {
-                WoodAmount += 1;
-                timer -= CollectDelay;
-            }
-            pop.PopUp("Press E to collect Wood");
+            WoodAmount += 1;
         }
-        else if (col.gameObject.name == "StoneObj")
-        {
-            if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
-            {
-                StoneAmount += 1;
-                timer -= CollectDelay;
-            }
-            pop.PopUp("Press E to collect Stone");
-        }
-    }
-
-    private void OnTriggerExit(Collider col)
-    {
-        pop.PopDown();
     }
 }
