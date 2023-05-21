@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
     float verticalInput;
 
     private Vector3 _moveDir = Vector3.zero;
+    private bool canMove;
 
     public float CollectDelay = 1f;
     float timer;
@@ -23,7 +24,8 @@ public class CharacterController : MonoBehaviour
     public TMPro.TMP_Text WoodAmountText;
     public TMPro.TMP_Text StoneAmountText;
 
-    PopUpSystem pop;
+    private PopUpSystem pop;
+    private TowerBuy buy;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,9 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pop = GameObject.FindGameObjectWithTag("GameUI").GetComponent<PopUpSystem>();
         pop.PopDown();
+
+        buy = GameObject.FindGameObjectWithTag("GameUI").GetComponent<TowerBuy>();
+        buy.CloseBuy();
     }
 
     // Update is called once per frame
@@ -43,6 +48,19 @@ public class CharacterController : MonoBehaviour
         SpeedControl();
 
         ChangeResourceText();
+
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (buy.isActive() == false)
+            {
+                buy.OpenBuy();
+            }
+            else
+            {
+                buy.CloseBuy();
+            }
+        }
     }
 
     void FixedUpdate()
