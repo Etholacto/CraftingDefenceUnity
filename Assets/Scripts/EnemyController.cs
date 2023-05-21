@@ -32,13 +32,15 @@ public class EnemyController : MonoBehaviour
         enemy.GetComponent<CapsuleCollider>().radius = 0.5f;
         enemy.GetComponent<CapsuleCollider>().isTrigger = false;
         enemy.AddComponent<Rigidbody>();
-        enemy.GetComponent<Rigidbody>().useGravity = false;
-        enemy.GetComponent<Rigidbody>().isKinematic = true;
+        enemy.GetComponent<Rigidbody>().mass = 10f;
+        enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        enemy.GetComponent<Rigidbody>().useGravity = true;
+        enemy.GetComponent<Rigidbody>().isKinematic = false;
     }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {   
         Vector3 targetPosition = Vector3.zero;
         
@@ -52,6 +54,7 @@ public class EnemyController : MonoBehaviour
     // Handle collisions between enemy objects
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log ("It's a enemy");
         if (enemies.Contains(collision.gameObject))
         {
             // Reverse direction of collided enemies
@@ -60,5 +63,10 @@ public class EnemyController : MonoBehaviour
             collision.gameObject.transform.position += direction * moveSpeed * Time.deltaTime;
             enemies[Random.Range(0, enemies.Count)].transform.position -= direction * moveSpeed * Time.deltaTime;
         }
+        if (enemies.Contains(collision.gameObject)) {
+             Debug.Log ("It's a enemy");
+         } else {
+             Debug.Log ("It's a player");
+         }
     }
 }
