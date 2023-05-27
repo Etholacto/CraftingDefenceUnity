@@ -228,6 +228,15 @@ MonoBehaviour:
   CollectDelay: 1
   WoodAmountText: {fileID: 2067414016}
   StoneAmountText: {fileID: 1822929409}
+  GO_Tower1: {fileID: 4823204627645034628, guid: 5be170f81e504564fad2788f389af5a5, type: 3}
+  GO_Tower2: {fileID: 7365239344900966728, guid: fbaf4b46800b71e47a8e66ca2d60f688, type: 3}
+  GO_Tower3: {fileID: 8927171276639104522, guid: ebce250becca73b46b7f439fd0c241f3, type: 3}
+  currentObj: {fileID: 0}
+  TowerTarget: {fileID: 510804013}
+  TowerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  PlayerCameraTransform: {fileID: 1040491194}
 --- !u!136 &65620697
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1055,7 +1064,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 444004433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1940560965}
+        m_TargetAssemblyTypeName: TowerBuy, Assembly-CSharp
+        m_MethodName: spawn_Tower3_bp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5376464600490388125, guid: 64a741ad38c33244caa86f2c2ddc1170, type: 3}
+        m_TargetAssemblyTypeName: TowerBP, Assembly-CSharp
+        m_MethodName: DestroyAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &444004433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,7 +1212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 510804013}
-  - component: {fileID: 510804014}
   m_Layer: 0
   m_Name: TowerPlacement
   m_TagString: Untagged
@@ -1202,24 +1234,6 @@ Transform:
   m_Father: {fileID: 65620694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &510804014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510804012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 608dca53d811a7245883a278878825a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TowerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  PlayerCamera: {fileID: 1040491196}
-  TowerTarget: {fileID: 510804013}
-  TowerRange: 10
 --- !u!1 &536772839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1317,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536772842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1940560965}
+        m_TargetAssemblyTypeName: TowerBuy, Assembly-CSharp
+        m_MethodName: spawn_Tower2_bp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1785489495622514144, guid: 9f4d933f78fbd4f43a71016f9c2e79eb, type: 3}
+        m_TargetAssemblyTypeName: TowerBP, Assembly-CSharp
+        m_MethodName: DestroyAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &536772842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,7 +1598,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 588437744}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1940560965}
+        m_TargetAssemblyTypeName: TowerBuy, Assembly-CSharp
+        m_MethodName: spawn_Tower1_bp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5148501886851564282, guid: 5f8f0e818c5b9da48994e6bf89b20d6b, type: 3}
+        m_TargetAssemblyTypeName: TowerBP, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &588437744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3798,6 +3860,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerSelect: {fileID: 1940560960}
+  Tower1_bp: {fileID: 5148501886851564282, guid: 5f8f0e818c5b9da48994e6bf89b20d6b, type: 3}
+  Tower2_bp: {fileID: 3286112412232650330, guid: 9f4d933f78fbd4f43a71016f9c2e79eb, type: 3}
+  Tower3_bp: {fileID: 8846765453397846685, guid: 64a741ad38c33244caa86f2c2ddc1170, type: 3}
+  TowerTarget: {fileID: 510804013}
 --- !u!1 &1991932201
 GameObject:
   m_ObjectHideFlags: 0
