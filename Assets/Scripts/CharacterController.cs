@@ -25,12 +25,6 @@ public class CharacterController : MonoBehaviour
     public TMPro.TMP_Text StoneAmountText;
 
     private PopUpSystem pop;
-    private TowerBuy buy;
-    public GameObject GO_Tower1, GO_Tower2, GO_Tower3;
-    public GameObject currentObj;
-    [SerializeField] private Transform TowerTarget;
-    [SerializeField] private LayerMask TowerMask;
-    [SerializeField] private Transform PlayerCameraTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +32,6 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pop = GameObject.FindGameObjectWithTag("GameUI").GetComponent<PopUpSystem>();
         pop.PopDown();
-
-        buy = GameObject.FindGameObjectWithTag("GameUI").GetComponent<TowerBuy>();
-        buy.CloseBuy();
     }
 
     // Update is called once per frame
@@ -53,49 +44,6 @@ public class CharacterController : MonoBehaviour
         SpeedControl();
 
         ChangeResourceText();
-
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (buy.isActive() == false)
-            {
-                buy.OpenBuy();
-            }
-            else
-            {
-                buy.CloseBuy();
-            }
-        }
-
-        float RayDistance = 10f;
-        if (Physics.Raycast(PlayerCameraTransform.position, PlayerCameraTransform.forward, out RaycastHit HitInfo, RayDistance, TowerMask))
-        {
-            if (HitInfo.transform.TryGetComponent(out TowerBP towerBP))
-            {
-                currentObj = HitInfo.collider.gameObject;
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    Destroy(currentObj);
-                }
-                towerBP.MoveObject(TowerTarget);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            if (currentObj.name.Contains("1"))
-            {
-                Instantiate(GO_Tower1, TowerTarget.position, TowerTarget.rotation);
-            }
-            else if (currentObj.name.Contains("2"))
-            {
-                Instantiate(GO_Tower2, TowerTarget.position, TowerTarget.rotation);
-            }
-            else
-            {
-                Instantiate(GO_Tower3, TowerTarget.position, TowerTarget.rotation);
-            }
-        }
     }
 
     void FixedUpdate()
