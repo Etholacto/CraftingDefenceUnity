@@ -32,6 +32,6 @@ public class PauseMenu : MonoBehaviour
 
     public bool isPanelActive()
     {
-        return PausePanel.activeSelf;
+            return PausePanel.activeSelf;
     }
 }

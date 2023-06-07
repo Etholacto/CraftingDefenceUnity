@@ -18,14 +18,6 @@ public class TowerBP : MonoBehaviour
         objectRigidbody.useGravity = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void FixedUpdate()
     {
         if (objectGrabPointTransform != null)

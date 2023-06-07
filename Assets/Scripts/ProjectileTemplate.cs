@@ -9,9 +9,4 @@ public class ProjectileTemplate : MonoBehaviour
         GameObject tower = GameObject.FindGameObjectWithTag("Tower");
         Physics.IgnoreCollision(tower.GetComponent<BoxCollider>(), GetComponent<SphereCollider>());
     }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        Destroy(gameObject);
-    }
 }

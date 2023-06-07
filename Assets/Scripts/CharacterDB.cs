@@ -5,18 +5,39 @@ using UnityEngine;
 [CreateAssetMenu]
 public class CharacterDB : ScriptableObject
 {
-    public CharacterSelect[] character;
+    public Resources[] resources;
 
-    public int CharacterCount
+    public float GetResource(string value)
     {
-        get
+        if (value.Contains("wood"))
         {
-            return character.Length;
+            return resources[0].Value;
+        }
+        else if (value.Contains("stone"))
+        {
+            return resources[1].Value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public void SetResource(string value, float amount)
+    {
+        if (value.Contains("wood"))
+        {
+            resources[0].Value += amount;
+        }
+        else if (value.Contains("stone"))
+        {
+            resources[1].Value += amount;
         }
     }
 
-    public CharacterSelect GetCharacter(int index)
+    public void resetValues()
     {
-        return character[index];
+        resources[0].Value = 0f;
+        resources[1].Value = 0f;
     }
 }
