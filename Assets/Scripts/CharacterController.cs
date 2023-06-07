@@ -24,18 +24,13 @@ public class CharacterController : MonoBehaviour
     public TMPro.TMP_Text WoodAmountText;
     public TMPro.TMP_Text StoneAmountText;
 
-    private PopUpSystem pop;
-    private TowerBuy buy;
+    [SerializeField] private PopUpSystem pop;
+    [SerializeField] private PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pop = GameObject.FindGameObjectWithTag("GameUI").GetComponent<PopUpSystem>();
-        pop.PopDown();
-
-        buy = GameObject.FindGameObjectWithTag("GameUI").GetComponent<TowerBuy>();
-        buy.CloseBuy();
     }
 
     // Update is called once per frame
@@ -49,16 +44,15 @@ public class CharacterController : MonoBehaviour
 
         ChangeResourceText();
 
-
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (buy.isActive() == false)
+            if (pauseMenu.isPanelActive())
             {
-                buy.OpenBuy();
+                pauseMenu.Continue();
             }
             else
             {
-                buy.CloseBuy();
+                pauseMenu.Pause();
             }
         }
     }
@@ -90,8 +84,11 @@ public class CharacterController : MonoBehaviour
 
     private void ChangeResourceText()
     {
-        WoodAmountText.text = string.Format("{0}", WoodAmount);
-        StoneAmountText.text = string.Format("{0}", StoneAmount);
+        if (WoodAmountText != null || StoneAmountText != null)
+        {
+            WoodAmountText.text = string.Format("{0}", WoodAmount);
+            StoneAmountText.text = string.Format("{0}", StoneAmount);
+        }
     }
 
     private void OnTriggerStay(Collider col)
