@@ -3,9 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+
   tags:
   - GameUI
   - Tower
+  - Projectile
+=======
+  tags: []
+
   layers:
   - Default
   - TransparentFX

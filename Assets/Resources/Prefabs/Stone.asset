@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26d8eee53bc01c40a5c1c8da8f1eab0, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  id: 2
-  itemName: Stone
-  value: 1
+  id: 0
+  itemName: 
+  value: 0
