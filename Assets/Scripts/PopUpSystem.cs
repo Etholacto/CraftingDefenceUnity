@@ -5,8 +5,8 @@ using TMPro;
 
 public class PopUpSystem : MonoBehaviour
 {
-    public GameObject popUpBox;
-    public TMP_Text popUpText;
+    [SerializeField] private GameObject popUpBox;
+    [SerializeField] private TMP_Text popUpText;
 
     public void PopUp(string text)
     {
