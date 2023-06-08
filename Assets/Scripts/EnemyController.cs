@@ -40,6 +40,8 @@ public class EnemyController : MonoBehaviour
             enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             enemy.GetComponent<Rigidbody>().useGravity = true;
             enemy.GetComponent<Rigidbody>().isKinematic = false;
+            enemy.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+            enemy.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
     }
 

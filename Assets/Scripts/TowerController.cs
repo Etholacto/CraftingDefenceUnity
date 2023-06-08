@@ -1,46 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class TowerController : MonoBehaviour
 {
-    [SerializeField] private LayerMask TowerMask;
-    [SerializeField] private Camera PlayerCamera;
-    [SerializeField] private Transform TowerTarget;
-    [Space]
-    [SerializeField] private float TowerRange;
-    private Rigidbody CurrentObject;
+    [SerializeField] private GameObject Projectile;
+    [SerializeField] private Transform SpawnPoint;
 
-    // Update is called once per frame
-    void Update()
+    //Projectile Force
+    [SerializeField] private float ForwardForce;
+
+    //Tower Stats
+    [SerializeField] private float ShotDelay;
+    private float delay;
+
+    //Bools
+    private bool ready;
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (CurrentObject)
-            {
-                CurrentObject.useGravity = true;
-                CurrentObject = null;
-                return;
-            }
+        delay = ShotDelay;
+    }
 
-            Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-            if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, TowerRange, TowerMask))
-            {
-                CurrentObject = HitInfo.rigidbody;
-                CurrentObject.useGravity = false;
-            }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            ready = true;
         }
     }
 
-    void FixedUpdate()
+    private void OnTriggerExit(Collider other)
     {
-        if (CurrentObject)
+        if (other.gameObject.tag == "Player")
         {
-            Vector3 DirectionToPoint = TowerTarget.position + CurrentObject.position;
-            float DistanceToPoint = DirectionToPoint.magnitude;
+            ready = false;
+        }
+        if (other.gameObject.tag == "Projectile")
+        {
+            Destroy(other);
+        }
+    }
 
-            CurrentObject.velocity = DirectionToPoint * 10f * DistanceToPoint;
+    private void OnTriggerStay(Collider col)
+    {
+        if (ready)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                if (delay <= 0f)
+                {
+                    delay = ShotDelay;
+
+
+                    Vector3 DirectionOfProjectile = col.transform.position - SpawnPoint.position;
+
+                    //Make Projectile
+                    GameObject currentProjectile = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+
+                    //Add forces to Projectile
+                    currentProjectile.GetComponent<Rigidbody>().AddForce(DirectionOfProjectile.normalized * ForwardForce, ForceMode.Impulse);
+
+                    Destroy(currentProjectile, 2.5f);
+                }
+
+                delay--;
+            }
         }
     }
 }
