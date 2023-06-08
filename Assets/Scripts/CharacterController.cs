@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
+    [Header("Character Movement")]
     public float Speed = 5.0f;
 
     Rigidbody rb;
@@ -18,12 +19,13 @@ public class CharacterController : MonoBehaviour
     public float CollectDelay = 1f;
     float timer;
 
-    float WoodAmount = 0;
-    float StoneAmount = 0;
+    [Header("Resources")]
+    [SerializeField] private CharacterDB db;
 
-    public TMPro.TMP_Text WoodAmountText;
-    public TMPro.TMP_Text StoneAmountText;
+    [SerializeField] private TMPro.TMP_Text WoodAmountText;
+    [SerializeField] private TMPro.TMP_Text StoneAmountText;
 
+    [Header("UI")]
     [SerializeField] private PopUpSystem pop;
     [SerializeField] private PauseMenu pauseMenu;
 
@@ -31,6 +33,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        db.resetValues();
     }
 
     // Update is called once per frame
@@ -86,8 +89,8 @@ public class CharacterController : MonoBehaviour
     {
         if (WoodAmountText != null || StoneAmountText != null)
         {
-            WoodAmountText.text = string.Format("{0}", WoodAmount);
-            StoneAmountText.text = string.Format("{0}", StoneAmount);
+            WoodAmountText.text = string.Format("{0}", db.GetResource("wood"));
+            StoneAmountText.text = string.Format("{0}", db.GetResource("stone"));
         }
     }
 
@@ -98,7 +101,7 @@ public class CharacterController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
             {
-                WoodAmount += 1;
+                db.SetResource("wood", 1f);
                 timer -= CollectDelay;
             }
             pop.PopUp("Press E to collect Wood");
@@ -107,7 +110,7 @@ public class CharacterController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
             {
-                StoneAmount += 1;
+                db.SetResource("stone", 1f);
                 timer -= CollectDelay;
             }
             pop.PopUp("Press E to collect Stone");

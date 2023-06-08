@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615045200391665171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1032702267022376227}
   - component: {fileID: 8549517736762670178}
   - component: {fileID: 4785979159707046034}
-  - component: {fileID: 3459059130339636343}
+  - component: {fileID: 7557619652279512232}
   - component: {fileID: 8410278379681040784}
   m_Layer: 0
   m_Name: Tower1
@@ -131,8 +131,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!136 &3459059130339636343
-CapsuleCollider:
+--- !u!135 &7557619652279512232
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -141,9 +141,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 10
-  m_Height: 1
-  m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &8410278379681040784
 MonoBehaviour:
@@ -160,4 +159,4 @@ MonoBehaviour:
   Projectile: {fileID: 6585999163554737249, guid: 62ec24ee3627b264ab28a6a87f02e652, type: 3}
   SpawnPoint: {fileID: 8864143853087771424}
   ForwardForce: 100
-  ShotDelay: 50
+  ShotDelay: 25

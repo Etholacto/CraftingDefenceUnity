@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CharacterSelect
+public class Resources
 {
-    public string CharacterName;
-    public GameObject Character;
+    public float Value;
 }
