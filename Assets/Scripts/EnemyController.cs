@@ -9,10 +9,13 @@ public class EnemyController : MonoBehaviour
     GameObject enemyPrefab;
 
     [SerializeField]
-    GameObject mainCharacter;
+    GameObject castle;
 
     [SerializeField]
     GameObject Healthbar;
+
+    [SerializeField]
+    float enemiesNumber;
 
     [SerializeField]
     float moveSpeed = 5f;
@@ -22,7 +25,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < enemiesNumber; i++)
         {
             float x = Random.Range(-20f, 20f);
             float z = Random.Range(-20f, 20f);
@@ -48,7 +51,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetPosition = mainCharacter.transform.position;
+        Vector3 targetPosition = castle.transform.position;
 
         foreach (GameObject enemy in enemies)
         {
@@ -62,11 +65,11 @@ public class EnemyController : MonoBehaviour
     {
         if (enemies.Contains(collision.gameObject))
         {
-            Debug.Log("It's a enemy");
+            Debug.Log("Enemy collided");
         }
         else
         {
-            Debug.Log("It's a player");
+            Debug.Log("Player collided");
         }
     }
 }
