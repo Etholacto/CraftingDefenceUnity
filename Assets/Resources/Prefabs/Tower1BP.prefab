@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4101599465979788496}
   - component: {fileID: 6995455496053289257}
   - component: {fileID: -4491862634023313047}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Tower1BP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

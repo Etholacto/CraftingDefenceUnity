@@ -4355,10 +4355,10 @@ MonoBehaviour:
   TowerTarget: {fileID: 1611749401}
   TowerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   PlayerCameraTransform: {fileID: 1720408537}
-  pop: {fileID: 0}
-  db: {fileID: 0}
+  pop: {fileID: 1107409607}
+  db: {fileID: 11400000, guid: b6ff9dbb98f5f3242a457e148ab4e5bc, type: 2}
 --- !u!114 &1308304020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6282,7 +6282,7 @@ GameObject:
   - component: {fileID: 1997940524}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7599107098199515588}
   - component: {fileID: 800659403687705070}
   - component: {fileID: 5376464600490388125}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Tower3BP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     float enemiesNumber;
-
+ 
     [SerializeField]
     float moveSpeed;
 
@@ -47,6 +47,7 @@ public class EnemyController : MonoBehaviour
 
             // Attach EnemyCollisionHandler script to each enemy
             enemy.AddComponent<IndividualEnemyController>();
+            enemy.tag = "Enemy";
         }
     }
 
@@ -55,11 +56,16 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 targetPosition = castle.transform.position;
 
-        foreach (GameObject enemy in enemies)
+        if (enemies != null)
         {
-            Vector3 newPosition = Vector3.MoveTowards(enemy.transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            enemy.transform.position = newPosition;
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy != null)
+                {
+                    Vector3 newPosition = Vector3.MoveTowards(enemy.transform.position, targetPosition, moveSpeed * Time.deltaTime);
+                    enemy.transform.position = newPosition;
+                }
+            }
         }
     }
-
 }

@@ -25,7 +25,7 @@ public class TowerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enemy")
         {
             ready = true;
         }
@@ -33,7 +33,7 @@ public class TowerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enemy")
         {
             ready = false;
         }
@@ -47,7 +47,7 @@ public class TowerController : MonoBehaviour
     {
         if (ready)
         {
-            if (col.gameObject.tag == "Player")
+            if (col.gameObject.tag == "Enemy")
             {
                 if (delay <= 0f)
                 {

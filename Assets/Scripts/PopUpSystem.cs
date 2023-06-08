@@ -18,4 +18,9 @@ public class PopUpSystem : MonoBehaviour
     {
         popUpBox.SetActive(false);
     }
+
+    public bool IsPopUp()
+    {
+        return popUpBox.activeSelf;
+    }
 }

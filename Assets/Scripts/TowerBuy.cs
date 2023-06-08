@@ -107,36 +107,51 @@ public class TowerBuy : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Tab))
         {
-            pop.PopDown();
+            if (pop.IsPopUp())
+            {
+                pop.PopDown();
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 spawnTower(currentObj);
             }
-            b1.GetComponent<Image>().color = Color.white;
-            b2.GetComponent<Image>().color = Color.white;
-            b3.GetComponent<Image>().color = Color.white;
+            if (b1 != null || b2 != null || b3 != null)
+            {
+                b1.GetComponent<Image>().color = Color.white;
+                b2.GetComponent<Image>().color = Color.white;
+                b3.GetComponent<Image>().color = Color.white;
+            }
             Destroy(currentObj);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            b1.GetComponent<Image>().color = Color.grey;
-            b2.GetComponent<Image>().color = Color.white;
-            b3.GetComponent<Image>().color = Color.white;
+            if (b1 != null || b2 != null || b3 != null)
+            {
+                b1.GetComponent<Image>().color = Color.grey;
+                b2.GetComponent<Image>().color = Color.white;
+                b3.GetComponent<Image>().color = Color.white;
+            }
             spawn_Tower1_bp();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            b1.GetComponent<Image>().color = Color.white;
-            b2.GetComponent<Image>().color = Color.grey;
-            b3.GetComponent<Image>().color = Color.white;
+            if (b1 != null || b2 != null || b3 != null)
+            {
+                b1.GetComponent<Image>().color = Color.white;
+                b2.GetComponent<Image>().color = Color.grey;
+                b3.GetComponent<Image>().color = Color.white;
+            }
             spawn_Tower2_bp();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            b1.GetComponent<Image>().color = Color.white;
-            b2.GetComponent<Image>().color = Color.white;
-            b3.GetComponent<Image>().color = Color.grey;
+            if (b1 != null || b2 != null || b3 != null)                
+            {
+                b1.GetComponent<Image>().color = Color.white;
+                b2.GetComponent<Image>().color = Color.white;
+                b3.GetComponent<Image>().color = Color.grey;
+            }
             spawn_Tower3_bp();
         }
 
