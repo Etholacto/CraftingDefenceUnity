@@ -1259,6 +1259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecf6607fb0462449826e04430ace065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBarText: {fileID: 99922271}
+  castleImage: {fileID: 585057760}
+  Castlehealth: 100
 --- !u!64 &277262876
 MeshCollider:
   m_ObjectHideFlags: 0
