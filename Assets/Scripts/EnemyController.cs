@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
     [SerializeField]
     GameObject enemyPrefab;
 
@@ -18,7 +17,7 @@ public class EnemyController : MonoBehaviour
     float enemiesNumber;
 
     [SerializeField]
-    float moveSpeed = 5f;
+    float moveSpeed;
 
     List<GameObject> enemies = new List<GameObject>();
 
@@ -29,14 +28,14 @@ public class EnemyController : MonoBehaviour
         {
             float x = Random.Range(-20f, 20f);
             float z = Random.Range(-20f, 20f);
-            Vector3 position = new Vector3(x, 0, z);
+            Vector3 position = new Vector3(x, 1f, z);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
             enemies.Add(enemy);
 
             GameObject healthBar = Instantiate(Healthbar, enemy.transform);
             // Add colliders to enemy prefabs
             enemy.AddComponent<CapsuleCollider>();
-            enemy.GetComponent<CapsuleCollider>().radius = 0.5f;
+            enemy.GetComponent<CapsuleCollider>().radius = 0.65f;
             enemy.GetComponent<CapsuleCollider>().isTrigger = false;
             enemy.AddComponent<Rigidbody>();
             enemy.GetComponent<Rigidbody>().mass = 1f;
@@ -45,6 +44,9 @@ public class EnemyController : MonoBehaviour
             enemy.GetComponent<Rigidbody>().isKinematic = false;
             enemy.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
             enemy.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+            // Attach EnemyCollisionHandler script to each enemy
+            enemy.AddComponent<IndividualEnemyController>();
         }
     }
 
@@ -60,16 +62,4 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Handle collisions between enemy objects
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (enemies.Contains(collision.gameObject))
-        {
-            Debug.Log("Enemy collided");
-        }
-        else
-        {
-            Debug.Log("Player collided");
-        }
-    }
 }
