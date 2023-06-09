@@ -10,8 +10,11 @@ public class PopUpSystem : MonoBehaviour
 
     public void PopUp(string text)
     {
-        popUpBox.SetActive(true);
-        popUpText.text = text;
+        if (text != null && popUpBox != null)
+        {
+            popUpBox.SetActive(true);
+            popUpText.text = text;
+        }
     }
 
     public void PopDown()

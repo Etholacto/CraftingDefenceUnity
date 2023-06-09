@@ -27,26 +27,14 @@ public class TowerBuy : MonoBehaviour
     [Header("other")]
     [SerializeField] private PopUpSystem pop;
     [SerializeField] private CharacterDB db;
+    private GameObject[] towersBP = new GameObject[3];
+    private int index = 0;
 
-    private void spawn_Tower1_bp()
+    private void Awake()
     {
-        Destroy(currentObj);
-        Instantiate(Tower1_bp, TowerTarget.position, TowerTarget.rotation);
-        pop.PopUp("1 wood, 1 stone");
-    }
-
-    private void spawn_Tower2_bp()
-    {
-        Destroy(currentObj);
-        Instantiate(Tower2_bp, TowerTarget.position, TowerTarget.rotation);
-        pop.PopUp("2 wood, 2 stone");
-    }
-
-    private void spawn_Tower3_bp()
-    {
-        Destroy(currentObj);
-        Instantiate(Tower3_bp, TowerTarget.position, TowerTarget.rotation);
-        pop.PopUp("3 wood, 3 stone");
+        towersBP[0] = Tower1_bp;
+        towersBP[1] = Tower2_bp;
+        towersBP[2] = Tower3_bp;
     }
 
     private void spawnTower(GameObject currentObj)
@@ -59,10 +47,6 @@ public class TowerBuy : MonoBehaviour
                 db.SetResource("wood", -1f);
                 db.SetResource("stone", -1f);
             }
-            else
-            {
-                pop.PopUp("Not enough Resources");
-            }
         }
         else if (currentObj.name.Contains("2"))
         {
@@ -73,12 +57,8 @@ public class TowerBuy : MonoBehaviour
                 db.SetResource("wood", -2f);
                 db.SetResource("stone", -2f);
             }
-            else
-            {
-                pop.PopUp("Not enough Resources");
-            }
         }
-        else
+        else if (currentObj.name.Contains("3"))
         {
             if (db.GetResource("wood") > 2 || db.GetResource("stone") > 2)
             {
@@ -86,16 +66,17 @@ public class TowerBuy : MonoBehaviour
                 db.SetResource("wood", -3f);
                 db.SetResource("stone", -3f);
             }
-            else
-            {
-                pop.PopUp("Not enough Resources");
-            }
+        }
+
+        if (pop != null)
+        {
+            pop.PopUp("Not enough Resources");
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        float RayDistance = 10f;
+        float RayDistance = 12f;
         if (Physics.Raycast(PlayerCameraTransform.position, PlayerCameraTransform.forward, out RaycastHit HitInfo, RayDistance, TowerMask))
         {
             if (HitInfo.transform.TryGetComponent(out TowerBP towerBP))
@@ -104,15 +85,22 @@ public class TowerBuy : MonoBehaviour
                 towerBP.MoveObject(TowerTarget);
             }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Tab))
+    private void Update()
+    {
+        if (Input.GetButtonDown("Place.P1") || Input.GetButtonDown("Reset.P1"))
         {
-            if (pop.IsPopUp())
+            if (pop != null)
             {
-                pop.PopDown();
+                if (pop.IsPopUp())
+                {
+                    pop.PopDown();
+                }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Place.P1"))
             {
+                Destroy(currentObj);
                 spawnTower(currentObj);
             }
             if (b1 != null || b2 != null || b3 != null)
@@ -121,10 +109,37 @@ public class TowerBuy : MonoBehaviour
                 b2.GetComponent<Image>().color = Color.white;
                 b3.GetComponent<Image>().color = Color.white;
             }
-            Destroy(currentObj);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        ChooseTowerBp();
+    }
+
+    private void ChooseTowerBp()
+    {
+        if (Input.GetButtonDown("Next.P1"))
+        {
+            SpawnBP(towersBP[index]);
+            index++;
+        }
+        else if (Input.GetButtonDown("Prev.P1"))
+        {
+            SpawnBP(towersBP[index]);
+            index--;
+        }
+        if (index == towersBP.Length)
+        {
+            index = 0;
+        }
+        else if (index < 0)
+        {
+            index = towersBP.Length - 1;
+        }
+    }
+
+    private void SpawnBP(GameObject towerBP)
+    {
+        Destroy(currentObj);
+        if (towerBP.name.Contains("1"))
         {
             if (b1 != null || b2 != null || b3 != null)
             {
@@ -132,9 +147,10 @@ public class TowerBuy : MonoBehaviour
                 b2.GetComponent<Image>().color = Color.white;
                 b3.GetComponent<Image>().color = Color.white;
             }
-            spawn_Tower1_bp();
+            Instantiate(Tower1_bp, TowerTarget.position, TowerTarget.rotation);
+            ResourcePop(1, 1);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (towerBP.name.Contains("2"))
         {
             if (b1 != null || b2 != null || b3 != null)
             {
@@ -142,18 +158,28 @@ public class TowerBuy : MonoBehaviour
                 b2.GetComponent<Image>().color = Color.grey;
                 b3.GetComponent<Image>().color = Color.white;
             }
-            spawn_Tower2_bp();
+            Instantiate(Tower2_bp, TowerTarget.position, TowerTarget.rotation);
+            ResourcePop(2, 2);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else
         {
-            if (b1 != null || b2 != null || b3 != null)                
+            if (b1 != null || b2 != null || b3 != null)
             {
                 b1.GetComponent<Image>().color = Color.white;
                 b2.GetComponent<Image>().color = Color.white;
                 b3.GetComponent<Image>().color = Color.grey;
             }
-            spawn_Tower3_bp();
+            Instantiate(Tower3_bp, TowerTarget.position, TowerTarget.rotation);
+            ResourcePop(3, 3);
         }
+    }
 
+    private void ResourcePop(float woodcost, float stonecost)
+    {
+        if (pop != null)
+        {
+            string text = $"{woodcost} wood, {stonecost} stone";
+            pop.PopUp(text);
+        }
     }
 }
