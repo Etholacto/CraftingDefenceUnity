@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
+    [Header("Player 1")]
+    [SerializeField] private bool player1;
+
     [Header("Character Movement")]
     public float Speed = 5.0f;
 
@@ -32,16 +35,25 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody>();
         db.resetValues();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Get Input
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+
+        if (player1)
+        {
+            //Get Input
+            horizontalInput = Input.GetAxis("Horizontal.P1");
+            verticalInput = Input.GetAxis("Vertical.P1");
+        }
+        else
+        {
+            horizontalInput = Input.GetAxis("Horizontal.P2");
+            verticalInput = Input.GetAxis("Vertical.P2");
+        }
 
         SpeedControl();
 
@@ -49,13 +61,16 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseMenu.isPanelActive())
+            if (pauseMenu != null)
             {
-                pauseMenu.Continue();
-            }
-            else
-            {
-                pauseMenu.Pause();
+                if (pauseMenu.isPanelActive())
+                {
+                    pauseMenu.Continue();
+                }
+                else
+                {
+                    pauseMenu.Pause();
+                }
             }
         }
     }
@@ -99,21 +114,21 @@ public class CharacterController : MonoBehaviour
         timer += Time.deltaTime;
         if (col.gameObject.name == "WoodObj")
         {
-            if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
+            if ((Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Minus)) && timer > CollectDelay)
             {
                 db.SetResource("wood", 1f);
                 timer -= CollectDelay;
             }
-            pop.PopUp("Press E to collect Wood");
+            pop.PopUp("Press F to collect Wood");
         }
         else if (col.gameObject.name == "StoneObj")
         {
-            if (Input.GetKey(KeyCode.E) && timer > CollectDelay)
+            if ((Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Minus)) && timer > CollectDelay)
             {
                 db.SetResource("stone", 1f);
                 timer -= CollectDelay;
             }
-            pop.PopUp("Press E to collect Stone");
+            pop.PopUp("Press F to collect Stone");
         }
     }
 
