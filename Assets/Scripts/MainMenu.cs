@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void PlayGameP1()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerPrefs.SetString("IsCoop", "no");
+        SceneManager.LoadScene("CastleMap");
+    }
+
+    public void PlayGameP2()
+    {
+        PlayerPrefs.SetString("IsCoop", "yes");
+        SceneManager.LoadScene("CastleMap");
     }
 
     public void QuitGame()

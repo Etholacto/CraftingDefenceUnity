@@ -15,16 +15,16 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     float enemiesNumber;
- 
+
     [SerializeField]
     float moveSpeed;
 
     List<GameObject> enemies = new List<GameObject>();
 
     // Start is called before the first frame update
-    void Start()
+    public void SpawnEnemies(float amount)
     {
-        for (int i = 0; i < enemiesNumber; i++)
+        for (int i = 0; i < amount; i++)
         {
             float x = Random.Range(-20f, 20f);
             float z = Random.Range(-20f, 20f);
@@ -67,5 +67,10 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public int enemyAlive()
+    {
+        return enemies.Count;
     }
 }

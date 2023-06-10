@@ -41,7 +41,7 @@ public class TowerBuy : MonoBehaviour
     {
         if (currentObj.name.Contains("1"))
         {
-            if (db.GetResource("wood") > 0 || db.GetResource("stone") > 0)
+            if (db.GetResource("wood") > 0 && db.GetResource("stone") > 0)
             {
                 Instantiate(Tower1, TowerTarget.position, TowerTarget.rotation);
                 db.SetResource("wood", -1f);
@@ -50,7 +50,7 @@ public class TowerBuy : MonoBehaviour
         }
         else if (currentObj.name.Contains("2"))
         {
-            if (db.GetResource("wood") > 1 || db.GetResource("stone") > 1)
+            if (db.GetResource("wood") > 1 && db.GetResource("stone") > 1)
 
             {
                 Instantiate(Tower2, TowerTarget.position, TowerTarget.rotation);
@@ -60,7 +60,7 @@ public class TowerBuy : MonoBehaviour
         }
         else if (currentObj.name.Contains("3"))
         {
-            if (db.GetResource("wood") > 2 || db.GetResource("stone") > 2)
+            if (db.GetResource("wood") > 2 && db.GetResource("stone") > 2)
             {
                 Instantiate(Tower3, TowerTarget.position, TowerTarget.rotation);
                 db.SetResource("wood", -3f);
@@ -70,7 +70,7 @@ public class TowerBuy : MonoBehaviour
 
         if (pop != null)
         {
-            pop.PopUp("Not enough Resources");
+            pop.PopUpTimed("Not enough Resources", 5f);
         }
     }
 

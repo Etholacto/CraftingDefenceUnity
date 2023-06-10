@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PopUpSystem : MonoBehaviour
@@ -15,6 +16,19 @@ public class PopUpSystem : MonoBehaviour
             popUpBox.SetActive(true);
             popUpText.text = text;
         }
+    }
+
+    public void PopUpTimed(string text, float timer)
+    {
+        popUpBox.SetActive(true);
+        PopUp(text);
+        StartCoroutine(timedPop(timer));
+        popUpBox.SetActive(false);
+    }
+
+    IEnumerator timedPop(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
     public void PopDown()
