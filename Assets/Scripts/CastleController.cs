@@ -17,9 +17,9 @@ public class CastleController : MonoBehaviour
         //Debug.Log("Collision occurred with: " + collision.gameObject.name);
         if (collision.gameObject.name == "Bean enemy(Clone)" && Castlehealth > 0)
         {
-            Castlehealth--;
-            castleImage.fillAmount = castleImage.fillAmount - 0.01f;
-            HealthBarText.text = Castlehealth.ToString()+"%";
+            Castlehealth = Castlehealth - 0.1f;
+            castleImage.fillAmount = castleImage.fillAmount - 0.001f;
+            HealthBarText.text = Castlehealth.ToString("0")+"%";
             
         }
     }
