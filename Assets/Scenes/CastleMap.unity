@@ -5151,6 +5151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  enemy: {fileID: 480996900}
   countdownText: {fileID: 581709902}
 --- !u!114 &1479880844
 MonoBehaviour:

@@ -8,7 +8,7 @@ public class IndividualEnemyController : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Castle" || collision.gameObject.name == "Bean enemy(Clone)") {
+        if(collision.gameObject.name == "Castle" ) {
 
 			Vector3 moveDirection = transform.position - collision.transform.position;
 			moveDirection.Normalize();
