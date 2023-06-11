@@ -22,6 +22,7 @@ public class PauseMenu : MonoBehaviour
     public void returnToMenu()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public bool isPanelActive()
