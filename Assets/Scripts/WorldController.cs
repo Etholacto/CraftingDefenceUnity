@@ -19,6 +19,7 @@ public class WorldController : MonoBehaviour
 
     [SerializeField]
     private EnemyController enemy;
+    private TowerBuyP2 tbp2;
 
     [SerializeField] private TMP_Text countdownText;
 
@@ -27,9 +28,12 @@ public class WorldController : MonoBehaviour
         currentTime = startingTime;
         if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
         {
-            Vector3 P2Position = player1.transform.position + new Vector3(2, 0, 0);
-            Instantiate(player2, P2Position, Quaternion.identity);
             setter.SetBool(false);
+            tbp2.SetTowerSettings(player2.transform.GetChild(0).gameObject.transform, player2.transform.GetChild(0).gameObject.transform);
+        }
+        else
+        {
+            DestroyImmediate(player2, true);
         }
     }
 
@@ -47,10 +51,13 @@ public class WorldController : MonoBehaviour
         {
             enemy.SpawnEnemies(enemyAmount);
         }
-        if (enemy.enemyAlive() <= 0 && currentTime < 0f)
+        if (enemy != null)
         {
-            enemyAmount = enemyAmount * 2;
-            currentTime = startingTime;
+            if (enemy.enemyAlive() <= 0)
+            {
+                enemyAmount = enemyAmount * 2;
+                currentTime = startingTime;
+            }
         }
     }
 }

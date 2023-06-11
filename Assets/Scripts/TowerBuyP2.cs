@@ -37,6 +37,12 @@ public class TowerBuyP2 : MonoBehaviour
         towersBP[2] = Tower3_bp;
     }
 
+    public void SetTowerSettings(Transform TowerTar, Transform TowerCamTrans)
+    {
+        TowerTarget = TowerTar;
+        PlayerCameraTransform = TowerCamTrans;
+    }
+
     private void spawnTower(GameObject currentObj)
     {
         if (currentObj.name.Contains("1"))

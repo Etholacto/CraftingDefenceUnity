@@ -37,6 +37,15 @@ public class TowerBuy : MonoBehaviour
         towersBP[2] = Tower3_bp;
     }
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
+        {
+            this.gameObject.GetComponent<TowerBuyP2>().enabled = true;
+        }
+    }
+
+
     private void spawnTower(GameObject currentObj)
     {
         if (currentObj.name.Contains("1"))

@@ -9,9 +9,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private bool player1;
 
     [Header("Character Movement")]
-    public float Speed = 5.0f;
+    [SerializeField] private float Speed = 10.0f;
+    [SerializeField] private float RotSpeed = 240.0f;
+    [SerializeField] private float Gravity = 20.0f;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
     float horizontalInput;
     float verticalInput;
@@ -32,11 +34,26 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private PopUpSystem pop;
     [SerializeField] private PauseMenu pauseMenu;
 
+    private Camera MainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
         db.resetValues();
+        rb = this.GetComponent<Rigidbody>();
+        if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
+        {
+            GameObject MainCamera = this.transform.GetChild(3).gameObject;
+            Camera Cam = MainCamera.GetComponent<Camera>();
+            if (player1)
+            {
+                Cam.rect = new Rect(0f, 0f, 0.5f, 1f);
+            }
+            else
+            {
+                Cam.rect = new Rect(0.5f, 0f, 0.5f, 1f);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -83,9 +100,20 @@ public class CharacterController : MonoBehaviour
     private void MovePlayer()
     {
         //calculate movement direction
-        _moveDir = transform.forward * verticalInput + transform.right * horizontalInput;
+        //_moveDir = transform.forward * verticalInput + transform.right * horizontalInput;
 
-        rb.AddForce(_moveDir.normalized * Speed * 10f, ForceMode.Force);
+        transform.Rotate(0, horizontalInput * RotSpeed * Time.deltaTime, 0);
+
+        bool move = (verticalInput > 0) || (horizontalInput != 0);
+
+        _moveDir = Vector3.forward * verticalInput;
+
+        _moveDir = transform.TransformDirection(_moveDir);
+        _moveDir *= Speed;
+
+        _moveDir.y -= Gravity * Time.deltaTime;
+
+        rb.AddForce(_moveDir.normalized * 10 * Speed, ForceMode.Force);
     }
 
     private void SpeedControl()
