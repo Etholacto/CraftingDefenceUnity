@@ -15,7 +15,7 @@ public class CastleController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Collision occurred with: " + collision.gameObject.name);
-        if (collision.gameObject.name == "Bean enemy(Clone)" && Castlehealth > 0)
+        if (collision.gameObject.name == "Black Widow(Clone)" && Castlehealth > 0)
         {
             Castlehealth = Castlehealth - 0.1f;
             castleImage.fillAmount = castleImage.fillAmount - 0.001f;

@@ -15,13 +15,21 @@ public class WorldController : MonoBehaviour
     private float startingTime = 5f;
 
     private float enemyAmount = 20f;
-    private bool spawnEnemies = false;
+    private bool oneTimeMusic = false;
 
     [SerializeField]
     private EnemyController enemy;
     private TowerBuyP2 tbp2;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip atackSound;
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip battleSound;
+
     [SerializeField] private TMP_Text countdownText;
+
+    private AudioManager AudioManager;
 
     private void Start()
     {
@@ -49,8 +57,15 @@ public class WorldController : MonoBehaviour
             }
         }
         if (currentTime < 0.01f && currentTime > 0f)
-        {
+        {   
+            if(oneTimeMusic) {
+                AudioManager.PlaySFX(battleSound);
+
+                oneTimeMusic = false;
+            }
             enemy.SpawnEnemies(enemyAmount/2);
+            oneTimeMusic = true;
+
         }
         if (enemy != null && currentTime < -5f)
         {
