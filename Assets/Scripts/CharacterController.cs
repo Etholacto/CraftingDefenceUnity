@@ -99,18 +99,11 @@ public class CharacterController : MonoBehaviour
 
     private void MovePlayer()
     {
-        //calculate movement direction
-        //_moveDir = transform.forward * verticalInput + transform.right * horizontalInput;
-
-        transform.Rotate(0, horizontalInput * RotSpeed * Time.deltaTime, 0);
-
-        bool move = (verticalInput > 0) || (horizontalInput != 0);
+        Quaternion Rotation = Quaternion.Euler(new Vector3(0, horizontalInput * RotSpeed, 0) * Time.fixedDeltaTime);
+        rb.MoveRotation(rb.rotation.normalized * Rotation);
 
         _moveDir = Vector3.forward * verticalInput;
-
-        _moveDir = transform.TransformDirection(_moveDir);
-        _moveDir *= Speed;
-
+        _moveDir = transform.TransformDirection(_moveDir) * Speed;
         _moveDir.y -= Gravity * Time.deltaTime;
 
         rb.AddForce(_moveDir.normalized * 10 * Speed, ForceMode.Force);
