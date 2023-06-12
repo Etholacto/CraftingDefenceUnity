@@ -1,10 +1,23 @@
+using Mono.Cecil;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IndividualEnemyController : MonoBehaviour
 {
 	public float moveDistance = 2f;
 
-    private float Health = 25f;
+    private float Health = 50f;
+
+    private Image foregroundImage;
+
+    void Start()
+    {
+        GameObject healthBar = GameObject.Find("HealthBar");
+        GameObject instantiatedHealthBar = Instantiate(healthBar, transform);
+        Transform foreground = instantiatedHealthBar.transform.Find("Background/Foreground");
+
+        foregroundImage = foreground.GetComponent<Image>();
+    }
 
 	private void OnCollisionEnter(Collision collision)
     {
@@ -21,6 +34,7 @@ public class IndividualEnemyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             Health -= 10;
+            foregroundImage.fillAmount -= 0.2f;
         }
     }
 

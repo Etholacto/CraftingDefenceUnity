@@ -32,13 +32,12 @@ public class EnemyController : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
             enemies.Add(enemy);
 
-            GameObject healthBar = Instantiate(Healthbar, enemy.transform);
             // Add colliders to enemy prefabs
-            enemy.AddComponent<CapsuleCollider>();
-            enemy.GetComponent<CapsuleCollider>().radius = 0.65f;
-            enemy.GetComponent<CapsuleCollider>().isTrigger = false;
+            enemy.AddComponent<BoxCollider>();
+            enemy.GetComponent<BoxCollider>().size = new Vector3(3f, 1f, 3f);
+            enemy.GetComponent<BoxCollider>().isTrigger = false;
             enemy.AddComponent<Rigidbody>();
-            enemy.GetComponent<Rigidbody>().mass = 1f;
+            enemy.GetComponent<Rigidbody>().mass = 1000f;
             enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             enemy.GetComponent<Rigidbody>().useGravity = true;
             enemy.GetComponent<Rigidbody>().isKinematic = false;
