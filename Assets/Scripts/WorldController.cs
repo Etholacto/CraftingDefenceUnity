@@ -12,7 +12,7 @@ public class WorldController : MonoBehaviour
     private PlayerPos setter;
 
     private float currentTime = 0f;
-    private float startingTime = 30f;
+    private float startingTime = 5f;
 
     private float enemyAmount = 20f;
     private bool spawnEnemies = false;
@@ -28,8 +28,8 @@ public class WorldController : MonoBehaviour
         currentTime = startingTime;
         if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
         {
-            setter.SetBool(false);
-            tbp2.SetTowerSettings(player2.transform.GetChild(0).gameObject.transform, player2.transform.GetChild(0).gameObject.transform);
+            //setter.SetBool(false);
+            //tbp2.SetTowerSettings(player2.transform.GetChild(0).gameObject.transform, player2.transform.GetChild(0).gameObject.transform);
         }
         else
         {
@@ -40,7 +40,8 @@ public class WorldController : MonoBehaviour
     private void Update()
     {
         if (currentTime > 0f)
-        {   
+        {
+
             currentTime -= 1 * Time.deltaTime;
             if (countdownText != null)
             {
@@ -49,9 +50,9 @@ public class WorldController : MonoBehaviour
         }
         if (currentTime < 0.01f && currentTime > 0f)
         {
-            enemy.SpawnEnemies(enemyAmount);
+            enemy.SpawnEnemies(enemyAmount/2);
         }
-        if (enemy != null)
+        if (enemy != null && currentTime < -5f)
         {
             if (enemy.enemyAlive() <= 0)
             {
