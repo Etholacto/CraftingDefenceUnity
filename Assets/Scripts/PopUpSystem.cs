@@ -20,15 +20,9 @@ public class PopUpSystem : MonoBehaviour
 
     public void PopUpTimed(string text, float timer)
     {
-        popUpBox.SetActive(true);
         PopUp(text);
-        StartCoroutine(timedPop(timer));
-        popUpBox.SetActive(false);
-    }
-
-    IEnumerator timedPop(float time)
-    {
-        yield return new WaitForSeconds(time);
+        Debug.Log("why");
+        Invoke("PopDown", timer);
     }
 
     public void PopDown()

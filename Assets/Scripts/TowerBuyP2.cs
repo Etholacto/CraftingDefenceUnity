@@ -70,7 +70,7 @@ public class TowerBuyP2 : MonoBehaviour
 
         if (pop != null)
         {
-            pop.PopUp("Not enough Resources");
+            pop.PopUpTimed("Not enough Resources", 1.5f);
         }
     }
 

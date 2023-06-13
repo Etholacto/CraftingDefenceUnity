@@ -40,14 +40,14 @@ public class WorldController : MonoBehaviour
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip atackSound;
-
-    [Header("Audio Clips")]
     [SerializeField] private AudioClip battleSound;
 
+    private AudioManager AudioManager;
+
+    [Header("other")]
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text mobsKilled;
-    private AudioManager AudioManager;
 
     private void Start()
     {
@@ -90,12 +90,12 @@ public class WorldController : MonoBehaviour
 
         }
         if (currentTime < 0f)
-        {   
+        {
             Debug.Log(enemy.enemyAlive());
             if (enemy.enemyAlive() <= 0)
             {
-                gameLevel+=1f;
-                levelText.text = "Level: "+gameLevel.ToString("0");
+                gameLevel += 1f;
+                levelText.text = "Level: " + gameLevel.ToString("0");
                 enemyAmount = enemyAmount * 2;
                 currentTime = startingTime;
             }
@@ -104,6 +104,7 @@ public class WorldController : MonoBehaviour
         UpdateTime();
         RotateSun();
         UpdateLight();
+
     }
 
     private void UpdateTime()

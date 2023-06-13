@@ -64,6 +64,11 @@ public class EnemyController : MonoBehaviour
                 {
                     Vector3 newPosition = Vector3.MoveTowards(enemy.transform.position, targetPosition, moveSpeed * Time.deltaTime);
                     enemy.transform.position = newPosition;
+
+                    Vector3 targetDirection = enemy.transform.position - targetPosition;
+                    float step = moveSpeed * Time.deltaTime;
+                    Vector3 newDirection = Vector3.RotateTowards(enemy.transform.forward, targetDirection, step, 0.0f);
+                    enemy.transform.rotation = Quaternion.LookRotation(newDirection);
                 }
             }
         }

@@ -9,6 +9,7 @@ TagManager:
   - GameUI
   - Enemy
   - Audio
+  - World
   layers:
   - Default
   - TransparentFX

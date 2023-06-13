@@ -42,7 +42,7 @@ public class TowerBuy : MonoBehaviour
         if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
         {
             this.gameObject.GetComponent<TowerBuyP2>().enabled = true;
-            pop.gameObject.GetComponent<RectTransform>().position = new Vector3(-475, 250, 0);
+            pop.transform.position = new Vector3(305, 630, 0);
         }
     }
 
@@ -80,7 +80,7 @@ public class TowerBuy : MonoBehaviour
 
         if (pop != null)
         {
-            pop.PopUpTimed("Not enough Resources", 5f);
+            pop.PopUpTimed("Not enough Resources", 1.5f);
         }
     }
 

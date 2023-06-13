@@ -47,7 +47,7 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   enemy: {fileID: 0}
-  startHour: 12
+  startHour: 8
   timeMultiplier: 2000
   sunLight: {fileID: 0}
   sunrise: 7
@@ -67,14 +67,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.13546515
-      value: 0.7131218
-      inSlope: 4.7471995
-      outSlope: 4.7471995
+      time: 0.11131056
+      value: 0.7862403
+      inSlope: 2.4135118
+      outSlope: 2.4135118
       tangentMode: 0
       weightedMode: 3
-      inWeight: 0.33333334
-      outWeight: 0.079646364
+      inWeight: 0.27943048
+      outWeight: 0.1109169
     - serializedVersion: 3
       time: 1
       value: 1
@@ -93,3 +93,7 @@ MonoBehaviour:
   atackSound: {fileID: 8300000, guid: fede885452c3fb442b83079265b12502, type: 3}
   battleSound: {fileID: 8300000, guid: c0a4d5171bd4bee43b69202e86a5b4e1, type: 3}
   countdownText: {fileID: 0}
+  levelText: {fileID: 0}
+  mobsKilled: {fileID: 0}
+  pop: {fileID: 0}
+  pop2: {fileID: 0}
