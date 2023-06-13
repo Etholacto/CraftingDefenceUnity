@@ -16,7 +16,7 @@ public class WorldController : MonoBehaviour
     private float enemyAmount = 20f;
     private bool oneTimeMusic = false;
 
-    private float gameLevel = 0f;
+    private float gameLevel = 1f;
 
     [SerializeField]
     private EnemyController enemy;
@@ -46,6 +46,7 @@ public class WorldController : MonoBehaviour
 
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text mobsKilled;
     private AudioManager AudioManager;
 
     private void Start()
@@ -94,7 +95,7 @@ public class WorldController : MonoBehaviour
             if (enemy.enemyAlive() <= 0)
             {
                 gameLevel+=1f;
-                levelText.text = gameLevel.ToString("0");
+                levelText.text = "Level: "+gameLevel.ToString("0");
                 enemyAmount = enemyAmount * 2;
                 currentTime = startingTime;
             }
