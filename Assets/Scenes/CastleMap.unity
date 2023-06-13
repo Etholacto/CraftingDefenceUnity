@@ -3896,6 +3896,30 @@ PrefabInstance:
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 581709902}
+    - target: {fileID: 167182156629285551, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
+      propertyPath: lightChangeCurve.m_Curve.Array.data[1].time
+      value: 0.11131056
+      objectReference: {fileID: 0}
+    - target: {fileID: 167182156629285551, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
+      propertyPath: lightChangeCurve.m_Curve.Array.data[1].value
+      value: 0.7862403
+      objectReference: {fileID: 0}
+    - target: {fileID: 167182156629285551, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
+      propertyPath: lightChangeCurve.m_Curve.Array.data[1].inSlope
+      value: 2.4135118
+      objectReference: {fileID: 0}
+    - target: {fileID: 167182156629285551, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
+      propertyPath: lightChangeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.27943048
+      objectReference: {fileID: 0}
+    - target: {fileID: 167182156629285551, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
+      propertyPath: lightChangeCurve.m_Curve.Array.data[1].outSlope
+      value: 2.4135118
+      objectReference: {fileID: 0}
+    - target: {fileID: 167182156629285551, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
+      propertyPath: lightChangeCurve.m_Curve.Array.data[1].outWeight
+      value: 0.1109169
+      objectReference: {fileID: 0}
     - target: {fileID: 6232442423435499563, guid: 11f898ba9dd3b604fa9daebb5b157383, type: 3}
       propertyPath: m_RootOrder
       value: 8
