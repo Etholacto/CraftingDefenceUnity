@@ -21,7 +21,6 @@ public class PopUpSystem : MonoBehaviour
     public void PopUpTimed(string text, float timer)
     {
         PopUp(text);
-        Debug.Log("why");
         Invoke("PopDown", timer);
     }
 

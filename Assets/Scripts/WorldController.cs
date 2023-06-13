@@ -78,7 +78,6 @@ public class WorldController : MonoBehaviour
         }
         if (currentTime < 0.01f && currentTime > 0f)
         {
-            Debug.Log(currentTime);
             if (oneTimeMusic)
             {
                 AudioManager.PlaySFX(battleSound);
@@ -91,7 +90,6 @@ public class WorldController : MonoBehaviour
         }
         if (currentTime < 0f)
         {
-            Debug.Log(enemy.enemyAlive());
             if (enemy.enemyAlive() <= 0)
             {
                 gameLevel += 1f;
