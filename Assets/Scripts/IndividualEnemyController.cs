@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +5,7 @@ public class IndividualEnemyController : MonoBehaviour
 {
 	public float moveDistance = 2f;
 
-    private float Health = 50f;
+    public float Health = 50f;
 
     private Image foregroundImage;
 
