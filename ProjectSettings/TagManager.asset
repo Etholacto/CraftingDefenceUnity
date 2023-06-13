@@ -8,6 +8,7 @@ TagManager:
   - Tower
   - GameUI
   - Enemy
+  - Audio
   layers:
   - Default
   - TransparentFX

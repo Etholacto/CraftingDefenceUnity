@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float Gravity = 20.0f;
 
     private Rigidbody rb;
+    private Animator animator;
 
     float horizontalInput;
     float verticalInput;
@@ -41,9 +42,10 @@ public class CharacterController : MonoBehaviour
     {
         db.resetValues();
         rb = this.GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
         {
-            GameObject MainCamera = this.transform.GetChild(3).gameObject;
+            GameObject MainCamera = this.transform.GetChild(6).gameObject;
             Camera Cam = MainCamera.GetComponent<Camera>();
             if (player1)
             {
@@ -105,6 +107,9 @@ public class CharacterController : MonoBehaviour
         _moveDir = Vector3.forward * verticalInput;
         _moveDir = transform.TransformDirection(_moveDir) * Speed;
         _moveDir.y -= Gravity * Time.deltaTime;
+
+        bool move = (verticalInput > 0 || (horizontalInput != 0));
+        animator.SetBool("walk", move);
 
         rb.AddForce(_moveDir.normalized * 10 * Speed, ForceMode.Force);
     }

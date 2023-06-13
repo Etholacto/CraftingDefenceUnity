@@ -42,6 +42,7 @@ public class TowerBuy : MonoBehaviour
         if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
         {
             this.gameObject.GetComponent<TowerBuyP2>().enabled = true;
+            pop.gameObject.GetComponent<RectTransform>().position = new Vector3(-475, 250, 0);
         }
     }
 

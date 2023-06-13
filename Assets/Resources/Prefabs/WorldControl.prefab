@@ -44,6 +44,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97d3efb9268d3148b4b9f6b2ac77bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 6792887694820648048, guid: eb174b2f1ad48a044a7278b631a1b8c9, type: 3}
-  player2: {fileID: 7662812001583720100, guid: 761a7d192322c1e4bbd4d14186934394, type: 3}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  enemy: {fileID: 0}
+  startHour: 12
+  timeMultiplier: 2000
+  sunLight: {fileID: 0}
+  sunrise: 7
+  sunset: 20.5
+  DayLight: {r: 0.56078434, g: 0.6039216, b: 0.68235296, a: 0}
+  NightLight: {r: 0.15686275, g: 0.3137255, b: 0.39215687, a: 0}
+  lightChangeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.13546515
+      value: 0.7131218
+      inSlope: 4.7471995
+      outSlope: 4.7471995
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.079646364
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MaxLumen: 1
+  moonLight: {fileID: 0}
+  maxMoonLight: 0.5
+  atackSound: {fileID: 8300000, guid: fede885452c3fb442b83079265b12502, type: 3}
+  battleSound: {fileID: 8300000, guid: c0a4d5171bd4bee43b69202e86a5b4e1, type: 3}
   countdownText: {fileID: 0}
