@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using System.Linq;
 
 public class EnemyController : MonoBehaviour
 {
@@ -13,7 +15,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     GameObject Healthbar;
 
-    [SerializeField]
     float enemiesNumber;
 
     [SerializeField]
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     public void SpawnEnemies(float amount)
     {
+        enemiesNumber = amount;
         for (int i = 0; i < amount; i++)
         {
             float x = Random.Range(-20f, 20f);
@@ -34,10 +36,10 @@ public class EnemyController : MonoBehaviour
 
             // Add colliders to enemy prefabs
             enemy.AddComponent<BoxCollider>();
-            enemy.GetComponent<BoxCollider>().size = new Vector3(3f, 1f, 3f);
+            enemy.GetComponent<BoxCollider>().size = new Vector3(4f, 1f, 4f);
             enemy.GetComponent<BoxCollider>().isTrigger = false;
             enemy.AddComponent<Rigidbody>();
-            enemy.GetComponent<Rigidbody>().mass = 1000f;
+            enemy.GetComponent<Rigidbody>().mass = 1f;
             enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             enemy.GetComponent<Rigidbody>().useGravity = true;
             enemy.GetComponent<Rigidbody>().isKinematic = false;
@@ -70,6 +72,9 @@ public class EnemyController : MonoBehaviour
 
     public int enemyAlive()
     {
-        return enemies.Count;
+        string objectName = "Black Widow(Clone)";
+        GameObject[] enemies = GameObject.FindObjectsOfType<GameObject>().Where(obj => obj.name == objectName).ToArray();
+        int enemyCount = enemies.Length;
+        return enemyCount;
     }
 }

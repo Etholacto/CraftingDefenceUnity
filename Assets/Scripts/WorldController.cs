@@ -16,6 +16,8 @@ public class WorldController : MonoBehaviour
     private float enemyAmount = 20f;
     private bool oneTimeMusic = false;
 
+    private float gameLevel = 0f;
+
     [SerializeField]
     private EnemyController enemy;
 
@@ -43,7 +45,7 @@ public class WorldController : MonoBehaviour
     [SerializeField] private AudioClip battleSound;
 
     [SerializeField] private TMP_Text countdownText;
-
+    [SerializeField] private TMP_Text levelText;
     private AudioManager AudioManager;
 
     private void Start()
@@ -75,6 +77,7 @@ public class WorldController : MonoBehaviour
         }
         if (currentTime < 0.01f && currentTime > 0f)
         {
+            Debug.Log(currentTime);
             if (oneTimeMusic)
             {
                 AudioManager.PlaySFX(battleSound);
@@ -85,10 +88,13 @@ public class WorldController : MonoBehaviour
             oneTimeMusic = true;
 
         }
-        if (enemy != null && currentTime < -5f)
-        {
+        if (currentTime < 0f)
+        {   
+            Debug.Log(enemy.enemyAlive());
             if (enemy.enemyAlive() <= 0)
             {
+                gameLevel+=1f;
+                levelText.text = gameLevel.ToString("0");
                 enemyAmount = enemyAmount * 2;
                 currentTime = startingTime;
             }
