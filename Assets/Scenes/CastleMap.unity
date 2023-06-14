@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBarText: {fileID: 99922271}
   castleImage: {fileID: 585057760}
-  Castlehealth: 100
+  Castlehealth: 1
   GameOver: {fileID: 328319030}
 --- !u!64 &277262876
 MeshCollider:
@@ -1213,7 +1213,7 @@ RectTransform:
   m_Children:
   - {fileID: 117191970}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   Hud: {fileID: 1569227400}
   levelText: {fileID: 787752699}
   mobsKilled: {fileID: 1327256116}
-  AudioManager: {fileID: 3062115952304116037, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
+  AudioManager: {fileID: 1931514299}
   GameOverClip: {fileID: 8300000, guid: 3382dd38508b52341ba70b697e9ed6c8, type: 3}
 --- !u!1001 &337968005
 PrefabInstance:
@@ -1407,7 +1407,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &480996899 stripped
 Transform:
@@ -2661,7 +2661,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3062115952304116036, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3062115952304116036, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2711,8 +2711,20 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 3062115953495856723, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3062115953654906546, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
       propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062115953654906546, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062115953654906546, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3122,7 +3134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4882481920500871233, guid: 7d67ac5cfda0b944580afbed7561ec82, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4882481920500871233, guid: 7d67ac5cfda0b944580afbed7561ec82, type: 3}
       propertyPath: m_LocalScale.x
@@ -3359,7 +3371,7 @@ RectTransform:
   - {fileID: 1192649347}
   - {fileID: 1095000771}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4840,7 +4852,7 @@ Transform:
   - {fileID: 1478609296}
   - {fileID: 1731630727}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863020095
 GameObject:
@@ -4887,6 +4899,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 300, z: 300}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1931514299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3062115952304116037, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
+  m_PrefabInstance: {fileID: 1156598206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b113551af21c34ca31180134e32b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1962310516
 GameObject:
   m_ObjectHideFlags: 0
