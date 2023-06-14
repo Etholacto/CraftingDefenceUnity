@@ -35,7 +35,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private PopUpSystem pop;
     [SerializeField] private PauseMenu pauseMenu;
 
-    private Camera MainCamera;
+    [SerializeField] private Camera CamTwo;
+    private Camera Cam;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +44,11 @@ public class CharacterController : MonoBehaviour
         db.resetValues();
         rb = this.GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        GameObject MainCamera = this.transform.GetChild(6).gameObject;
+        Cam = MainCamera.GetComponent<Camera>();
         if (PlayerPrefs.GetString("IsCoop").Contains("yes"))
         {
-            GameObject MainCamera = this.transform.GetChild(6).gameObject;
-            Camera Cam = MainCamera.GetComponent<Camera>();
             if (player1)
             {
                 Cam.rect = new Rect(0f, 0f, 0.5f, 1f);
@@ -90,6 +92,20 @@ public class CharacterController : MonoBehaviour
                 {
                     pauseMenu.Pause();
                 }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (Cam.enabled)
+            {
+                CamTwo.enabled = true;
+                Cam.enabled = false;
+            }
+            else
+            {
+                CamTwo.enabled = false;
+                Cam.enabled = true;
             }
         }
     }

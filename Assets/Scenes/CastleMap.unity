@@ -3081,6 +3081,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 807946463712769316, guid: 7d67ac5cfda0b944580afbed7561ec82, type: 3}
+      propertyPath: CamTwo
+      value: 
+      objectReference: {fileID: 1288442203}
+    - target: {fileID: 807946463712769316, guid: 7d67ac5cfda0b944580afbed7561ec82, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1305073651}
@@ -3315,6 +3319,11 @@ Transform:
 --- !u!4 &1288442202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6767636466598839056, guid: 7d67ac5cfda0b944580afbed7561ec82, type: 3}
+  m_PrefabInstance: {fileID: 1288442199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1288442203 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2444458551071333167, guid: 7d67ac5cfda0b944580afbed7561ec82, type: 3}
   m_PrefabInstance: {fileID: 1288442199}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1305073649
@@ -4510,6 +4519,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 79669335047844929, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+      propertyPath: CamTwo
+      value: 
+      objectReference: {fileID: 1661187285}
+    - target: {fileID: 79669335047844929, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1305073651}
@@ -4619,6 +4632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+--- !u!20 &1661187285 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8109695258601353513, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+  m_PrefabInstance: {fileID: 1661187284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1731630726
 GameObject:
   m_ObjectHideFlags: 0

@@ -98,9 +98,9 @@ public class TowerBuyP2 : MonoBehaviour
                     pop.PopDown();
                 }
             }
+            Destroy(currentObj);
             if (Input.GetButtonDown("Place.P2"))
             {
-                Destroy(currentObj);
                 spawnTower(currentObj);
             }
             if (b1 != null || b2 != null || b3 != null)
