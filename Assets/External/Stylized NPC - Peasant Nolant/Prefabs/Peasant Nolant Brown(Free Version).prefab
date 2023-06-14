@@ -713,6 +713,7 @@ MonoBehaviour:
   Gravity: 20
   CollectDelay: 1
   db: {fileID: 11400000, guid: b6ff9dbb98f5f3242a457e148ab4e5bc, type: 2}
+  ResourcesCollect: {fileID: 8300000, guid: 504ec5eeabd2502458b0ec6447322b7d, type: 3}
   WoodAmountText: {fileID: 0}
   StoneAmountText: {fileID: 0}
   pop: {fileID: 0}

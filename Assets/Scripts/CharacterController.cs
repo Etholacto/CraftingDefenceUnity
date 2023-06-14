@@ -27,6 +27,8 @@ public class CharacterController : MonoBehaviour
 
     [Header("Resources")]
     [SerializeField] private CharacterDB db;
+    private AudioManager AudioManager;
+    [SerializeField] private AudioClip ResourcesCollect;
 
     [SerializeField] private TMPro.TMP_Text WoodAmountText;
     [SerializeField] private TMPro.TMP_Text StoneAmountText;
@@ -44,6 +46,7 @@ public class CharacterController : MonoBehaviour
         db.resetValues();
         rb = this.GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         GameObject MainCamera = this.transform.GetChild(6).gameObject;
         Cam = MainCamera.GetComponent<Camera>();
@@ -164,6 +167,7 @@ public class CharacterController : MonoBehaviour
             {
                 db.SetResource("wood", 1f);
                 timer -= CollectDelay;
+                AudioManager.PlaySFX(ResourcesCollect);
             }
             pop.PopUp("Press F to collect Wood");
         }
@@ -173,6 +177,7 @@ public class CharacterController : MonoBehaviour
             {
                 db.SetResource("stone", 1f);
                 timer -= CollectDelay;
+                AudioManager.PlaySFX(ResourcesCollect);
             }
             pop.PopUp("Press F to collect Stone");
         }
