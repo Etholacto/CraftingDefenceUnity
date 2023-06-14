@@ -52,6 +52,7 @@ public class CharacterController : MonoBehaviour
             if (player1)
             {
                 Cam.rect = new Rect(0f, 0f, 0.5f, 1f);
+                CamTwo.rect = new Rect(0f, 0f, 0.5f, 1f);
             }
             else
             {
@@ -80,17 +81,20 @@ public class CharacterController : MonoBehaviour
 
         ChangeResourceText();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (player1)
         {
-            if (pauseMenu != null)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (pauseMenu.isPanelActive())
+                if (pauseMenu != null)
                 {
-                    pauseMenu.Continue();
-                }
-                else
-                {
-                    pauseMenu.Pause();
+                    if (pauseMenu.isPanelActive())
+                    {
+                        pauseMenu.Continue();
+                    }
+                    else
+                    {
+                        pauseMenu.Pause();
+                    }
                 }
             }
         }
