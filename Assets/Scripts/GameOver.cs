@@ -18,19 +18,18 @@ public class GameOver : MonoBehaviour
     private AudioManager AudioManager;
     [SerializeField] private AudioClip GameOverClip;
 
-    private void Start()
-    {
-        AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
     public void Pause()
     {
-        AudioManager.StopAll();
+        if (AudioManager != null)
+        {
+            AudioManager.StopAll();
+            AudioManager.PlaySFX(GameOverClip);
+        }
         WorldController classAInstance = FindObjectOfType<WorldController>();
         GameOverPanel.SetActive(true);
         Hud.SetActive(false);
         Time.timeScale = 0;
 
-        AudioManager.ChangeBackground(GameOverClip);
         levelText.text = "Levels passed: " + classAInstance.gameLevel.ToString("0");
         mobsKilled.text = "Mobs killed: " + classAInstance.mobsKilled_.ToString("0");
     }

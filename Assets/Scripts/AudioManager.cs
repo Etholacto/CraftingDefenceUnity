@@ -24,12 +24,13 @@ public class AudioManager : MonoBehaviour
     public void ChangeBackground(AudioClip clip)
     {
         musicSource.clip = clip;
+        musicSource.Stop();
         musicSource.Play();
     }
 
     public void StopAll()
     {
-        musicSource.Pause();
-        SFXSource.Pause();
+        musicSource.Stop();
+        SFXSource.Stop();
     }
 }
