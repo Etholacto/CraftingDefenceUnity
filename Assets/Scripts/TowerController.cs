@@ -15,6 +15,9 @@ public class TowerController : MonoBehaviour
     [SerializeField] private float ShotDelay;
     private float delay;
 
+    private AudioManager AudioManager;
+    [SerializeField] private AudioClip ShootClip;
+
     //Bools
     private bool shooting;
 
@@ -23,6 +26,8 @@ public class TowerController : MonoBehaviour
     private void Awake()
     {
         delay = ShotDelay;
+
+        AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,6 +76,8 @@ public class TowerController : MonoBehaviour
                         ps.transform.rotation = Quaternion.LookRotation(newDirection);
                         ps.Play();
                     }
+
+                    AudioManager.PlaySFX(ShootClip);
 
                     Destroy(currentProjectile, 2.5f);
                 }

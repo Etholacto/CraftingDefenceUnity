@@ -5068,4 +5068,5 @@ MonoBehaviour:
   SpawnPoint: {fileID: 8537353019413201491}
   ForwardForce: 100
   ShotDelay: 65
+  ShootClip: {fileID: 8300000, guid: 255fcf8ce319c2845940748358023040, type: 3}
   ps: {fileID: 8380796315043531359}
