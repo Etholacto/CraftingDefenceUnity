@@ -51,30 +51,30 @@ public class TowerBuy : MonoBehaviour
     {
         if (currentObj.name.Contains("1"))
         {
-            if (db.GetResource("wood") > 0 && db.GetResource("stone") > 0)
+            if (db.GetResource("wood") > 1 && db.GetResource("stone") > 1)
             {
                 Instantiate(Tower1, TowerTarget.position, TowerTarget.rotation);
-                db.SetResource("wood", -1f);
-                db.SetResource("stone", -1f);
-            }
-        }
-        else if (currentObj.name.Contains("2"))
-        {
-            if (db.GetResource("wood") > 1 && db.GetResource("stone") > 1)
-
-            {
-                Instantiate(Tower2, TowerTarget.position, TowerTarget.rotation);
                 db.SetResource("wood", -2f);
                 db.SetResource("stone", -2f);
             }
         }
+        else if (currentObj.name.Contains("2"))
+        {
+            if (db.GetResource("wood") > 3 && db.GetResource("stone") > 3)
+
+            {
+                Instantiate(Tower2, TowerTarget.position, TowerTarget.rotation);
+                db.SetResource("wood", -4f);
+                db.SetResource("stone", -4f);
+            }
+        }
         else if (currentObj.name.Contains("3"))
         {
-            if (db.GetResource("wood") > 2 && db.GetResource("stone") > 2)
+            if (db.GetResource("wood") > 5 && db.GetResource("stone") > 5)
             {
                 Instantiate(Tower3, TowerTarget.position, TowerTarget.rotation);
-                db.SetResource("wood", -3f);
-                db.SetResource("stone", -3f);
+                db.SetResource("wood", -6f);
+                db.SetResource("stone", -6f);
             }
         }
 
@@ -158,7 +158,7 @@ public class TowerBuy : MonoBehaviour
                 b3.GetComponent<Image>().color = Color.white;
             }
             Instantiate(Tower1_bp, TowerTarget.position, TowerTarget.rotation);
-            ResourcePop(1, 1);
+            ResourcePop(2, 2);
         }
         else if (towerBP.name.Contains("2"))
         {
@@ -169,7 +169,7 @@ public class TowerBuy : MonoBehaviour
                 b3.GetComponent<Image>().color = Color.white;
             }
             Instantiate(Tower2_bp, TowerTarget.position, TowerTarget.rotation);
-            ResourcePop(2, 2);
+            ResourcePop(4, 4);
         }
         else
         {
@@ -180,7 +180,7 @@ public class TowerBuy : MonoBehaviour
                 b3.GetComponent<Image>().color = Color.grey;
             }
             Instantiate(Tower3_bp, TowerTarget.position, TowerTarget.rotation);
-            ResourcePop(3, 3);
+            ResourcePop(6, 6);
         }
     }
 

@@ -12,6 +12,8 @@ public class CastleController : MonoBehaviour
     [SerializeField]
     float Castlehealth;
 
+    [SerializeField] private GameOver GameOver;
+
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Collision occurred with: " + collision.gameObject.name);
@@ -21,6 +23,17 @@ public class CastleController : MonoBehaviour
             castleImage.fillAmount = castleImage.fillAmount - 0.001f;
             HealthBarText.text = Castlehealth.ToString("0")+"%";
             
+        }
+        else
+        {
+            if (GameOver.isPanelActive())
+            {
+                GameOver.Continue();
+            }
+            else
+            {
+                GameOver.Pause();
+            }
         }
     }
 }

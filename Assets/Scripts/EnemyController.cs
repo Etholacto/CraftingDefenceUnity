@@ -27,9 +27,9 @@ public class EnemyController : MonoBehaviour
         enemiesNumber = amount;
         for (int i = 0; i < amount; i++)
         {
-            float x = Random.Range(-20f, 20f);
-            float z = Random.Range(-20f, 20f);
-            Vector3 position = new Vector3(x, 1f, z);
+            float x = Random.Range(0f, 70f);
+            float z = Random.Range(-90f, 5f);
+            Vector3 position = new Vector3(x, 3f, z);
             GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
             enemies.Add(enemy);
 
