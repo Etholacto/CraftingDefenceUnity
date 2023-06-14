@@ -1124,6 +1124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 6792887694820648048, guid: eb174b2f1ad48a044a7278b631a1b8c9, type: 3}
   player2: {fileID: 7662812001583720100, guid: 761a7d192322c1e4bbd4d14186934394, type: 3}
+  gameLevel: 1
+  mobsKilled_: 0
   enemy: {fileID: 0}
   startHour: 0
   timeMultiplier: 0
@@ -1716,7 +1718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3033730191879914491
 RectTransform:
   m_ObjectHideFlags: 0

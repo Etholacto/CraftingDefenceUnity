@@ -1236,6 +1236,7 @@ MonoBehaviour:
   Hud: {fileID: 1569227400}
   levelText: {fileID: 787752699}
   mobsKilled: {fileID: 1327256116}
+  AudioManager: {fileID: 3062115952304116037, guid: e4cd2e6db2884d64c96bdfeb0e8a7672, type: 3}
   GameOverClip: {fileID: 8300000, guid: 3382dd38508b52341ba70b697e9ed6c8, type: 3}
 --- !u!1001 &337968005
 PrefabInstance:
@@ -1901,7 +1902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Levels passed: 10'
+  m_text: 'Levels passed: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3520,7 +3521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mobs killed: 123'
+  m_text: 'Mobs killed: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
