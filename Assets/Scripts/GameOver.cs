@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
@@ -8,12 +11,18 @@ public class GameOver : MonoBehaviour
 	[SerializeField] GameObject GameOverPanel;
 	[SerializeField] GameObject Hud;
 
-	public void Pause()
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text mobsKilled;
+
+    public void Pause()
 	{
-		GameOverPanel.SetActive(true);
+        WorldController classAInstance = FindObjectOfType<WorldController>();
+        GameOverPanel.SetActive(true);
 		Hud.SetActive(false);
 		Time.timeScale = 0;
-	}
+        levelText.text = "Levels passed: " + classAInstance.gameLevel.ToString("0");
+        mobsKilled.text = "Mobs killed: " + classAInstance.mobsKilled_.ToString("0");
+    }
 
 	public void Continue()
 	{
