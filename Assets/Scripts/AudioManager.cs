@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopAll()
     {
-        musicSource.Stop();
-        SFXSource.Stop();
+        musicSource.Pause();
+        SFXSource.Pause();
     }
 }
