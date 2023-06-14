@@ -24,6 +24,7 @@ public class CastleController : MonoBehaviour
             HealthBarText.text = Castlehealth.ToString("0")+"%";
             
         }
+        else if( Castlehealth > 0) { }
         else
         {
             if (GameOver.isPanelActive())

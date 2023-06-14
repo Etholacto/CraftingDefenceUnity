@@ -16,8 +16,8 @@ public class WorldController : MonoBehaviour
     private float enemyAmount = 20f;
     private bool oneTimeMusic = false;
 
-    private float gameLevel = 1f;
-    private int mobsKilled_ = 0;
+    public float gameLevel = 1f;
+    public int mobsKilled_ = 0;
     private int mobsPrev_;
 
     [SerializeField]

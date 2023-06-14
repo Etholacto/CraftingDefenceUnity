@@ -1234,6 +1234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverPanel: {fileID: 328319025}
   Hud: {fileID: 1569227400}
+  levelText: {fileID: 787752699}
+  mobsKilled: {fileID: 1327256116}
 --- !u!1001 &337968005
 PrefabInstance:
   m_ObjectHideFlags: 0
