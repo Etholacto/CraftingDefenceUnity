@@ -14,6 +14,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text mobsKilled;
 
+    [SerializeField]
     private AudioManager AudioManager;
     [SerializeField] private AudioClip GameOverClip;
 
@@ -28,7 +29,7 @@ public class GameOver : MonoBehaviour
         Hud.SetActive(false);
         Time.timeScale = 0;
 
-        AudioManager.PlaySFX(GameOverClip);
+        AudioManager.ChangeBackground(GameOverClip);
         levelText.text = "Levels passed: " + classAInstance.gameLevel.ToString("0");
         mobsKilled.text = "Mobs killed: " + classAInstance.mobsKilled_.ToString("0");
     }
