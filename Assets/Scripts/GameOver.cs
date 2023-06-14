@@ -23,6 +23,7 @@ public class GameOver : MonoBehaviour
     }
     public void Pause()
     {
+        AudioManager.StopAll();
         WorldController classAInstance = FindObjectOfType<WorldController>();
         GameOverPanel.SetActive(true);
         Hud.SetActive(false);

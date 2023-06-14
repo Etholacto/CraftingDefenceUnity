@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBarText: {fileID: 99922271}
   castleImage: {fileID: 585057760}
-  Castlehealth: 10
+  Castlehealth: 100
   GameOver: {fileID: 328319030}
 --- !u!64 &277262876
 MeshCollider:
@@ -1236,6 +1236,7 @@ MonoBehaviour:
   Hud: {fileID: 1569227400}
   levelText: {fileID: 787752699}
   mobsKilled: {fileID: 1327256116}
+  GameOverClip: {fileID: 8300000, guid: 3382dd38508b52341ba70b697e9ed6c8, type: 3}
 --- !u!1001 &337968005
 PrefabInstance:
   m_ObjectHideFlags: 0
