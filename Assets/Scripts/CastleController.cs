@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CastleController : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private TMPro.TMP_Text HealthBarText;
 
     [SerializeField]
@@ -21,10 +21,10 @@ public class CastleController : MonoBehaviour
         {
             Castlehealth = Castlehealth - 0.1f;
             castleImage.fillAmount = castleImage.fillAmount - 0.001f;
-            HealthBarText.text = Castlehealth.ToString("0")+"%";
-            
+            HealthBarText.text = Castlehealth.ToString("0") + "%";
+
         }
-        else if( Castlehealth > 0) { }
+        else if (Castlehealth > 0) { }
         else
         {
             if (GameOver.isPanelActive())

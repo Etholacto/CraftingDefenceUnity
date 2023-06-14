@@ -20,4 +20,10 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.PlayOneShot(clip);
     }
+
+    public void ChangeBackground(AudioClip clip)
+    {
+        musicSource.clip = clip;
+        musicSource.Play();
+    }
 }

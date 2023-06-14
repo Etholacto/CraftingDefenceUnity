@@ -11,7 +11,7 @@ public class WorldController : MonoBehaviour
     [SerializeField] private GameObject player2;
 
     private float currentTime = 0f;
-    private float startingTime = 5f;
+    private float startingTime = 10f;
 
     private float enemyAmount = 20f;
     private bool oneTimeMusic = false;
@@ -68,7 +68,7 @@ public class WorldController : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
 
         if (currentTime > 0f)
         {
@@ -83,16 +83,16 @@ public class WorldController : MonoBehaviour
         {
             if (oneTimeMusic)
             {
-                AudioManager.PlaySFX(battleSound);
+                AudioManager.ChangeBackground(battleSound);
 
                 oneTimeMusic = false;
             }
             enemy.SpawnEnemies(enemyAmount / 2);
-            oneTimeMusic = true;
+            //oneTimeMusic = true;
             mobsPrev_ = enemy.enemyAlive();
         }
         if (currentTime < 0f)
-        {   
+        {
             if (enemy.enemyAlive() <= 0)
             {
                 gameLevel += 1f;
@@ -100,13 +100,13 @@ public class WorldController : MonoBehaviour
                 enemyAmount = enemyAmount + 20f;
                 currentTime = startingTime;
             }
-            if( enemy.enemyAlive() < mobsPrev_ )
+            if (enemy.enemyAlive() < mobsPrev_)
             {
                 mobsKilled_ += mobsPrev_ - enemy.enemyAlive();
                 mobsPrev_ = enemy.enemyAlive();
                 mobsKilled.text = "Mobs killed: " + mobsKilled_.ToString("0");
             }
-            
+
         }
 
         UpdateTime();
